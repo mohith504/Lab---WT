@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Timetable</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef3ff;
+            color: #111936;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        /* Main white container */
+        .container {
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 40px 35px;
+            background: white;
+            border: 1px solid #d7e0f3;
+            border-radius: 18px;
+            box-shadow: 0 8px 35px rgba(33, 42, 90, 0.04);
+            min-height: 680px;
+        }
+
+        /* Title */
+        h1 {
+            font-size: 34px;
+            font-weight: 750;
+            color: #161c3f;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #586681;
+            font-size: 14px;
+            margin-bottom: 31px;
+        }
+
+        /* Responsive table container */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(30, 44, 100, 0.04);
+        }
+
+        table {
+            width: 100%;
+            min-width: 1100px;
+            border-collapse: separate;
+            border-spacing: 0;
+            table-layout: fixed;
+            border: 1px solid #d1dbf2;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Table header */
+        thead th {
+            height: 86px;
+            background: #382981;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.07);
+        }
+
+        thead th:last-child {
+            border-right: none;
+        }
+
+        .day-heading {
+            width: 145px;
+            background: #292251;
+            font-size: 15px;
+        }
+
+        .period-number {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 11px;
+        }
+
+        .period-time {
+            display: block;
+            font-size: 11px;
+            font-weight: normal;
+        }
+
+        /* Table body */
+        tbody td,
+        tbody th {
+            height: 78px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 14px;
+            border-right: 1px solid #d1dbf2;
+            border-bottom: 1px solid #d1dbf2;
+        }
+
+        tbody tr:last-child td,
+        tbody tr:last-child th {
+            border-bottom: none;
+        }
+
+        tbody td:last-child {
+            border-right: none;
+        }
+
+        tbody tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        tbody tr:nth-child(even) td {
+            background: #f7faff;
+        }
+
+        /* Colorful day labels */
+        .day {
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            border-right: none;
+        }
+
+        .monday {
+            background: #5949e1;
+        }
+
+        .tuesday {
+            background: #9400e8;
+        }
+
+        .wednesday {
+            background: #009a7c;
+        }
+
+        .thursday {
+            background: #fa4e2d;
+        }
+
+        .friday {
+            background: #ed0069;
+        }
+
+        .saturday {
+            background: #2b8eaa;
+        }
+
+        /* Vertically merged break column */
+        tbody td.break {
+            background: #f4f8ff !important;
+            border-right: 1px solid #d1dbf2;
+            border-bottom: none;
+            color: #20264d;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            writing-mode: vertical-rl;
+            transform: none;
+        }
+
+        .break-text {
+            display: inline-block;
+            transform: rotate(180deg);
+        }
+
+        /* Blue highlighted cell */
+        tbody td.selected {
+            background: #f2f7ff !important;
+            outline: 2px solid #83aaff;
+            outline-offset: -2px;
+        }
+
+        /* Rounded bottom corners */
+        tbody tr:last-child th:first-child {
+            border-bottom-left-radius: 11px;
+        }
+
+        tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 11px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 8px;
+            }
+
+            .container {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                margin-bottom: 25px;
+            }
+
+            table {
+                min-width: 1100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>My Timetable</h1>
+        <p class="subtitle">Weekly Class Schedule</p>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <!-- TABLE HEADER -->
+                <thead>
+                    <tr>
+                        <th class="day-heading">DAY</th>
+
+                        <th>
+                            <span class="period-number">I</span>
+                            <span class="period-time">8:00 – 9:00</span>
+                        </th>
+
+                        <th>
+                            <span class="period-number">II</span>
+                            <span class="period-time">9:00 – 10:00</span>
+                        </th>
+
+                        <th>
+                            <span class="period-number">III</span>
+                            <span class="period-time">10:00 – 10:30</span>
+                        </th>
+
+                        <th>
+                            <span class="period-number">IV</span>
+                            <span class="period-time">10:30 – 11:30</span>
+                        </th>
+
+                        <th>
+                            <span class="period-number">V</span>
+                            <span class="period-time">11:30 – 12:30</span>
+                        </th>
+
+                        <th>
+                            <span class="period-number">VI</span>
+                            <span class="period-time">12:30 – 1:30</span>
+                        </th>
+
+                        <th>
+                            <span class="period-number">VII</span>
+                            <span class="period-time">1:30 – 2:30</span>
+                        </th>
+
+                        <th>
+                            <span class="period-number">VIII</span>
+                            <span class="period-time">2:30 – 3:30</span>
+                        </th>
+
+                        <th>
+                            <span class="period-number">IX</span>
+                            <span class="period-time">3:30 – 4:30</span>
+                        </th>
+
+                        <th>
+                            <span class="period-number">X</span>
+                            <span class="period-time">4:30 – 5:30</span>
+                        </th>
+                    </tr>
+                </thead>
+
+                <!-- TABLE BODY -->
+                <tbody>
+
+                    <!-- MONDAY -->
+                    <tr>
+                        <th scope="row" class="day monday">Monday</th>
+
+                        <td>CNS</td>
+                        <td>TOC</td>
+
+                        <!-- BREAK extends across six days -->
+                        <td class="break" rowspan="6">
+                            <span class="break-text">BREAK</span>
+                        </td>
+
+                        <td>AI</td>
+                        <td>LAB</td>
+                        <td></td>
+                        <td class="selected"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <!-- TUESDAY -->
+                    <tr>
+                        <th scope="row" class="day tuesday">Tuesday</th>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>AI</td>
+                        <td>SE</td>
+                        <td>TOC</td>
+                        <td>CNS</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- WEDNESDAY -->
+                    <tr>
+                        <th scope="row" class="day wednesday">Wednesday</th>
+
+                        <td>RM</td>
+                        <td>SE</td>
+                        <td>TOC</td>
+                        <td>AI</td>
+                        <td></td>
+                        <td></td>
+                        <td>CNS - lab</td>
+                        <td>CNS - lab</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- THURSDAY -->
+                    <tr>
+                        <th scope="row" class="day thursday">Thursday</th>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>EVS</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <!-- FRIDAY -->
+                    <tr>
+                        <th scope="row" class="day friday">Friday</th>
+
+                        <td>Wt -lab</td>
+                        <td>Wt-lab</td>
+                        <td>TOC</td>
+                        <td>CNS</td>
+                        <td>Eng</td>
+                        <td></td>
+                        <td>RM</td>
+                        <td>SE</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- SATURDAY -->
+                    <tr>
+                        <th scope="row" class="day saturday">Saturday</th>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
